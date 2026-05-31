@@ -89,7 +89,7 @@ export function Setup() {
                             <button
                                 onClick={launchGame}
                                 className="px-4 py-2 border-2 disabled:text-zinc-200 disabled:cursor-not-allowed disabled:bg-amber-100 not-disabled:cursor-pointer not-disabled:bg-amber-400 not-disabled:hover:bg-amber-500 not-disabled:active:bg-amber-700 font-bold box-border"
-                                // disabled={!user}
+                                disabled={!user}
                             >
                                 Launch Game
                             </button>

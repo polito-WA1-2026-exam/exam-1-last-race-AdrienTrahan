@@ -6,6 +6,8 @@ import session from 'express-session';
 import { BaseController } from './controllers/base-controller/index.js';
 import { AuthService } from './services/auth-service/index.js';
 import { MapService } from './services/map-service/index.js';
+import { EventService } from './services/event-service/index.js';
+
 import defaults from './defaults.json' with { type: 'json' };
 
 export class App {
@@ -17,6 +19,7 @@ export class App {
     async start(port = 3001) {
         this.authService = await AuthService.create();
         this.mapService = await MapService.create();
+        this.eventService = await EventService.create();
 
         await this.prefillDefaults();
 
@@ -49,12 +52,19 @@ export class App {
 
     async prefillDefaults() {
         try {
+            await this.mapService.clearMaps();
             for (const map of defaults.maps) {
                 await this.mapService.createMap(map.segments, map.stations);
             }
-        } catch (err) {
-            console.log(err);
-        }
+        } catch (err) {}
+
+        try {
+            await this.eventService.clearEvents();
+            for (const event of defaults.events) {
+                await this.eventService.addEvent(event.name, event.effect);
+            }
+        } catch (err) {}
+
         try {
             for (const user of defaults.users) {
                 await this.authService.registerUser(

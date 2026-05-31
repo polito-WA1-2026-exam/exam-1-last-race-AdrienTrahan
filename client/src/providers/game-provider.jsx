@@ -9,6 +9,8 @@ const GameContext = createContext();
 
 export function GameProvider({ children }) {
     const [game, setGame] = useState();
+    const [events, setEvents] = useState([]);
+
     const { user } = useAuth();
     const navigate = useNavigate();
 
@@ -24,8 +26,18 @@ export function GameProvider({ children }) {
         });
     }
 
+    function submit(answer) {
+        return submitAnswers(user?.id, game.id, answer).then(
+            ({ game, events = [] }) => {
+                setGame(game);
+                setEvents(events);
+                return { game, events };
+            },
+        );
+    }
+
     return (
-        <GameContext.Provider value={{ game, create, launch }}>
+        <GameContext.Provider value={{ game, events, create, launch, submit }}>
             {children}
         </GameContext.Provider>
     );
@@ -43,5 +55,12 @@ async function launchGame(userId, gameId) {
     return getApi()
         .options({ credentials: 'include', mode: 'cors' })
         .post({ gameId }, '/game/launch')
+        .json();
+}
+
+async function submitAnswers(userId, gameId, answer) {
+    return getApi()
+        .options({ credentials: 'include', mode: 'cors' })
+        .post({ gameId, answer }, '/game/answer')
         .json();
 }

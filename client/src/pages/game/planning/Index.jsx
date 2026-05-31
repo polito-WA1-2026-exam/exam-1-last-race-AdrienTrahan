@@ -29,6 +29,8 @@ export function Planning() {
 
     useEffect(() => {
         if (!endingTime) return;
+        const diff = endingTime - new Date().getTime();
+        setTimeLeft(diff > 0 ? diff : 0);
         const interval = setInterval(() => {
             const diff = endingTime - new Date().getTime();
             setTimeLeft(diff > 0 ? diff : 0);
@@ -42,7 +44,18 @@ export function Planning() {
     }, [endingTime]);
 
     function submitAnswer() {
-        submit(selectedSegments).then(() => {});
+        submit(selectedSegments)
+            .then(({ game, events }) => {
+                if (game.wasSolved) {
+                    navigate(`/game/execution`);
+                } else {
+                    navigate(`/game/results`);
+                }
+            })
+            .catch((err) => {
+                alert(err.message ?? 'Failed to submit answer');
+                navigate('/');
+            });
     }
 
     const navigate = useNavigate();
@@ -52,12 +65,16 @@ export function Planning() {
                 <div className="w-full flex gap-2 justify-between border-b-2 py-2 px-2 relative">
                     <div></div>
                     <div className="h-full flex items-center flex-col absolute pointer-events-none left-1/2 -translate-x-1/2">
-                        <p className="text-xs font-bold text-zinc-500">
-                            Time left:
-                        </p>
-                        <p className="font-bold">
-                            {Math.ceil(timeLeft / 1000)}s
-                        </p>
+                        {timeLeft != null && (
+                            <>
+                                <p className="text-xs font-bold text-zinc-500">
+                                    Time left:
+                                </p>
+                                <p className="font-bold">
+                                    {Math.ceil(timeLeft / 1000)}s
+                                </p>
+                            </>
+                        )}
                     </div>
                     <div className="flex gap-2">
                         <button
@@ -93,9 +110,9 @@ export function Planning() {
                     </div>
                     <div className="flex-1 min-h-0 w-full flex flex-col">
                         <div className="border-b-2 font-bold h-12 flex text-center justify-center items-center px-2">
-                            {stationIds?.[game.startStationId]?.name}
+                            {stationIds?.[game?.startStationId]?.name}
                             <span className="mx-4 text-gray-400">➔</span>
-                            {stationIds?.[game.endStationId]?.name}
+                            {stationIds?.[game?.endStationId]?.name}
                         </div>
                         <div className="w-full p-2 bg-zinc-500 flex-1 min-h-0">
                             <NetworkMap
@@ -104,8 +121,8 @@ export function Planning() {
                                         ...station,
                                         highlighted:
                                             station.id ===
-                                                game.startStationId ||
-                                            station.id === game.endStationId,
+                                                game?.startStationId ||
+                                            station.id === game?.endStationId,
                                     }),
                                 )}
                                 segments={game?.map?.segments ?? []}
@@ -117,8 +134,12 @@ export function Planning() {
                         <h2 className="mt-2 text-lg sticky font-bold text-black">
                             My Path
                         </h2>
-                        {(game?.map?.segments ?? [])
-                            .filter(({ id }) => selectedSegments.includes(id))
+                        {(selectedSegments ?? [])
+                            .map((segmentId) =>
+                                game?.map?.segments?.find(
+                                    (s) => s.id === segmentId,
+                                ),
+                            )
                             .map((segment) => (
                                 <SegmentCell
                                     key={'segment-' + segment.id}

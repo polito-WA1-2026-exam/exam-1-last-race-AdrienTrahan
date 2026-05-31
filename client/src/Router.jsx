@@ -3,6 +3,8 @@ import { App } from './pages/App.jsx';
 import { Game } from './pages/game/Index.jsx';
 import { Setup } from './pages/game/setup/Index.jsx';
 import { Planning } from './pages/game/planning/Index.jsx';
+import { Execution } from './pages/game/execution/Index.jsx';
+import { Results } from './pages/game/results/Index.jsx';
 
 export function Router() {
     return (
@@ -13,7 +15,7 @@ export function Router() {
                 <Route path="setup" element={<Setup />} />
                 <Route path="planning" element={<Planning />} />
                 <Route path="execution" element={<Execution />} />
-                <Route path="result" element={<Result />} />
+                <Route path="results" element={<Results />} />
             </Route>
         </Routes>
     );

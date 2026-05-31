@@ -1,4 +1,52 @@
 {
+    "users": [
+        {
+            "username": "user1",
+            "password": "password1"
+        },
+        {
+            "username": "user2",
+            "password": "password2"
+        }
+    ],
+    "events": [
+        {
+            "name": "Event 1",
+            "effect": -4
+        },
+        {
+            "name": "Event 2",
+            "effect": -3
+        },
+        {
+            "name": "Event 3",
+            "effect": -2
+        },
+        {
+            "name": "Event 4",
+            "effect": -1
+        },
+        {
+            "name": "Event 5",
+            "effect": 0
+        },
+        {
+            "name": "Event 6",
+            "effect": 1
+        },
+        {
+            "name": "Event 7",
+            "effect": 2
+        },
+        {
+            "name": "Event 8",
+            "effect": 3
+        },
+        {
+            "name": "Event 9",
+            "effect": 4
+        }
+    ],
     "maps": [
         {
             "segments": [
@@ -155,16 +203,6 @@
                     "y": 25
                 }
             ]
-        }
-    ],
-    "users": [
-        {
-            "username": "user1",
-            "password": "password1"
-        },
-        {
-            "username": "user2",
-            "password": "password2"
         }
     ]
 }
