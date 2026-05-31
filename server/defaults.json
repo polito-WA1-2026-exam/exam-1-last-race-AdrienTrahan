@@ -1,0 +1,170 @@
+{
+    "maps": [
+        {
+            "segments": [
+                {
+                    "line": 0,
+                    "first_station_name": "Station 1",
+                    "second_station_name": "Station 2"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Station 2",
+                    "second_station_name": "Station 3"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Station 3",
+                    "second_station_name": "Station 4"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Station 5",
+                    "second_station_name": "Station 2"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Station 2",
+                    "second_station_name": "Station 6"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Station 6",
+                    "second_station_name": "Station 7"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Station 7",
+                    "second_station_name": "Station 8"
+                },
+                {
+                    "line": 2,
+                    "first_station_name": "Station 9",
+                    "second_station_name": "Station 7"
+                },
+                {
+                    "line": 2,
+                    "first_station_name": "Station 7",
+                    "second_station_name": "Station 10"
+                },
+                {
+                    "line": 2,
+                    "first_station_name": "Station 10",
+                    "second_station_name": "Station 4"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Station 13",
+                    "second_station_name": "Station 11"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Station 11",
+                    "second_station_name": "Station 4"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Station 4",
+                    "second_station_name": "Station 12"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Station 12",
+                    "second_station_name": "Station 14"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Station 14",
+                    "second_station_name": "Station 15"
+                }
+            ],
+            "stations": [
+                {
+                    "name": "Station 1",
+                    "x": 6,
+                    "y": 8
+                },
+                {
+                    "name": "Station 2",
+                    "x": 10,
+                    "y": 8
+                },
+                {
+                    "name": "Station 3",
+                    "x": 16,
+                    "y": 8
+                },
+                {
+                    "name": "Station 4",
+                    "x": 20,
+                    "y": 12
+                },
+                {
+                    "name": "Station 5",
+                    "x": 10,
+                    "y": 5
+                },
+                {
+                    "name": "Station 6",
+                    "x": 10,
+                    "y": 12
+                },
+                {
+                    "name": "Station 7",
+                    "x": 10,
+                    "y": 16
+                },
+                {
+                    "name": "Station 8",
+                    "x": 8,
+                    "y": 21
+                },
+                {
+                    "name": "Station 9",
+                    "x": 6,
+                    "y": 18
+                },
+                {
+                    "name": "Station 10",
+                    "x": 16,
+                    "y": 16
+                },
+                {
+                    "name": "Station 11",
+                    "x": 22,
+                    "y": 7
+                },
+                {
+                    "name": "Station 12",
+                    "x": 24,
+                    "y": 16
+                },
+                {
+                    "name": "Station 13",
+                    "x": 22,
+                    "y": 3
+                },
+                {
+                    "name": "Station 14",
+                    "x": 24,
+                    "y": 21
+                },
+                {
+                    "name": "Station 15",
+                    "x": 20,
+                    "y": 25
+                }
+            ]
+        }
+    ],
+    "users": [
+        {
+            "username": "user1",
+            "password": "password1"
+        },
+        {
+            "username": "user2",
+            "password": "password2"
+        }
+    ]
+}

@@ -78,7 +78,7 @@ export function ConnectionPanel() {
                 type="submit"
                 onClick={handleLogin}
                 disabled={!username || !password}
-                className="w-full cursor-pointer border-2 border-black bg-emerald-400 px-4 py-2 font-bold text-black transition not-disabled:hover:bg-emerald-500 not-disabled:active:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
+                className="w-full cursor-pointer border-2 border-black bg-emerald-400 px-4 py-2 font-bold text-black disabled:cursor-not-allowed disabled:opacity-40"
             >
                 Login
             </button>
@@ -86,7 +86,7 @@ export function ConnectionPanel() {
                 type="button"
                 onClick={handleRegister}
                 disabled={!username || !password}
-                className="mt-2 w-full cursor-pointer border-2 border-black bg-white px-4 py-2 font-bold text-black transition not-disabled:hover:bg-gray-100 not-disabled:active:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-40"
+                className="mt-2 w-full cursor-pointer border-2 border-black bg-white px-4 py-2 font-bold text-black disabled:cursor-not-allowed disabled:opacity-40"
             >
                 Register
             </button>

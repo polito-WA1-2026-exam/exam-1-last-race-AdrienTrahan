@@ -5,6 +5,9 @@ import session from 'express-session';
 
 import { BaseController } from './controllers/base-controller/index.js';
 import { AuthService } from './services/auth-service/index.js';
+import { MapService } from './services/map-service/index.js';
+import defaults from './defaults.json' with { type: 'json' };
+
 export class App {
     baseController = new BaseController();
     app = express();
@@ -13,6 +16,9 @@ export class App {
 
     async start(port = 3001) {
         this.authService = await AuthService.create();
+        this.mapService = await MapService.create();
+
+        await this.prefillDefaults();
 
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
@@ -39,5 +45,23 @@ export class App {
         this.app.listen(port, () =>
             console.log(`Server listening at http://localhost:${port}`),
         );
+    }
+
+    async prefillDefaults() {
+        try {
+            for (const map of defaults.maps) {
+                await this.mapService.createMap(map.segments, map.stations);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+        try {
+            for (const user of defaults.users) {
+                await this.authService.registerUser(
+                    user.username,
+                    user.password,
+                );
+            }
+        } catch (err) {}
     }
 }

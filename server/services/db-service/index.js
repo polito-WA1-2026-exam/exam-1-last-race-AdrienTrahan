@@ -25,6 +25,14 @@ export class DBService {
             });
         });
     }
+    all(sql, params = []) {
+        return new Promise((resolve, reject) => {
+            this.db.all(sql, params, (err, row) => {
+                if (err) reject(err);
+                else resolve(row);
+            });
+        });
+    }
 
     static instance = null;
     static async create(...args) {

@@ -10,13 +10,13 @@ export function App() {
                 {!loading && user && (
                     <button
                         onClick={logout}
-                        className="px-4 py-2 border-2 cursor-pointer hover:bg-rose-500 bg-rose-400 active:bg-rose-700 font-bold box-border transition"
+                        className="px-4 py-2 border-2 cursor-pointer bg-rose-400 font-bold box-border"
                     >
                         Logout
                     </button>
                 )}
                 <Link to="/game/setup">
-                    <button className="px-4 py-2 border-2 cursor-pointer hover:bg-amber-500 bg-amber-400 active:bg-amber-700 font-bold box-border transition">
+                    <button className="px-4 py-2 border-2 cursor-pointer bg-amber-400 font-bold box-border">
                         New Game
                     </button>
                 </Link>
