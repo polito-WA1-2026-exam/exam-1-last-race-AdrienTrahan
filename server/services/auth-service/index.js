@@ -2,7 +2,6 @@ import crypto from 'crypto';
 import { promisify } from 'util';
 import passport from 'passport';
 import { Strategy as BasicStrategy } from 'passport-local';
-import cron from 'node-cron';
 
 import { DBService } from '../db-service/index.js';
 
@@ -10,11 +9,6 @@ import { AppError, ResourceNotFound, UserNameTaken } from '../../error.js';
 
 const pbkdf2 = promisify(crypto.pbkdf2);
 const randomBytes = promisify(crypto.randomBytes);
-
-export const UserType = {
-    LoggedIn: 'LoggedIn',
-    Anonymous: 'Anonymous',
-};
 
 export class AuthService {
     async start() {
@@ -24,7 +18,6 @@ export class AuthService {
             `
                 CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    type TEXT,
                     username TEXT,
                     password TEXT,
                     salt TEXT,
@@ -34,7 +27,6 @@ export class AuthService {
         );
 
         this.configurePassport();
-        cron.schedule('0 12 * * *', () => this.cleanUpAnonymous());
     }
 
     configurePassport() {
@@ -79,8 +71,8 @@ export class AuthService {
         ).toString('hex');
 
         const user = await this.dbService.get(
-            'INSERT INTO users (type, username, password, salt) VALUES (?, ?, ?, ?) RETURNING id, type, username, registration_date',
-            [UserType.LoggedIn, username, hash, salt],
+            'INSERT INTO users (username, password, salt) VALUES (?, ?, ?) RETURNING id, username, registration_date',
+            [username, hash, salt],
         );
         return user;
     }
@@ -101,35 +93,18 @@ export class AuthService {
 
         return {
             id: user.id,
-            type: user.type,
             username: user.username,
             registration_date: user.registration_date,
         };
     }
 
-    async loginAnonymous() {
-        const user = await this.dbService.get(
-            'INSERT INTO users (type) VALUES (?) RETURNING id, type, username, registration_date',
-            [UserType.Anonymous],
-        );
-
-        return user;
-    }
-
     async getUser(id) {
         const user = await this.dbService.get(
-            'SELECT id, type, username, registration_date FROM users WHERE id = ?',
+            'SELECT id, username, registration_date FROM users WHERE id = ?',
             [id],
         );
         if (!user) throw new ResourceNotFound();
         return user;
-    }
-
-    async cleanUpAnonymous() {
-        await this.dbService.run(
-            "DELETE FROM users WHERE type = ? AND registration_date < datetime('now', '-1 day')",
-            [UserType.Anonymous],
-        );
     }
 
     static instance = null;

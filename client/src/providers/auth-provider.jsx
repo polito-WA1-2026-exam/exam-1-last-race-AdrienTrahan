@@ -5,21 +5,23 @@ import { getApi } from '../lib/network.js';
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
 
     useEffect(() => {
         let unmounted = false;
-        getLoginStatus().then((user) => {
-            if (unmounted) return;
-            if (user) {
-                setUser(user);
-            } else
-                logInAnonymous().then((user) => {
-                    if (unmounted) return;
-                    setUser(user);
-                });
-        });
+        setLoading(true);
+        getLoginStatus()
+            .then((user) => {
+                if (unmounted) return;
+                setLoading(false);
+                if (user) setUser(user);
+            })
+            .catch(() => {
+                if (unmounted) return;
+                setLoading(false);
+                setUser(null);
+            });
 
         return () => {
             unmounted = true;
@@ -39,14 +41,13 @@ export function AuthProvider({ children }) {
 
     async function logout() {
         await logoutUser();
-        const user = await logInAnonymous();
-        setUser(user);
-        return user;
+        setUser(null);
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, register, logout }}>
-            {error && <div>Error</div>}
+        <AuthContext.Provider
+            value={{ user, loading, login, register, logout }}
+        >
             {children}
         </AuthContext.Provider>
     );
@@ -60,18 +61,11 @@ async function getLoginStatus() {
     return new Promise((resolve, reject) =>
         getApi()
             .options({ credentials: 'include', mode: 'cors' })
-            .get('/auth/current')
+            .get('/auth')
             .json()
             .then(resolve)
             .catch(() => resolve(null)),
     );
-}
-
-async function logInAnonymous() {
-    return getApi()
-        .options({ credentials: 'include', mode: 'cors' })
-        .post({}, '/auth/login/anonymous')
-        .json();
 }
 
 async function logInUser(username, password) {
@@ -103,5 +97,5 @@ async function registerUser(username, password) {
 async function logoutUser() {
     return getApi()
         .options({ credentials: 'include', mode: 'cors' })
-        .delete('/auth/current');
+        .delete('/auth');
 }

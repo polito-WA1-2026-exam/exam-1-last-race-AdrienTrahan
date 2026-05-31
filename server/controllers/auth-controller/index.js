@@ -14,7 +14,6 @@ export class AuthController {
     async use(app) {
         this.authService = await AuthService.create();
 
-        this.router.get('/', (req, res) => res.send('Hello from API'));
         this.router.post(
             '/register/user',
             validateBody(registerUserSchema),
@@ -42,22 +41,12 @@ export class AuthController {
             },
         );
 
-        this.router.post('/login/anonymous', async (req, res, next) => {
-            const user = await this.authService.loginAnonymous();
-            req.login(user, (err) => {
-                if (err) return next(err);
-                res.json({ ...user });
-            });
-        });
-
-        this.router.get('/current', async (req, res, next) => {
+        this.router.get('/', async (req, res, next) => {
             if (req.isAuthenticated()) res.json(req.user);
-            else throw new AuthenticationInvalid();
+            else res.json(null);
         });
 
-        this.router.delete('/current', (req, res) =>
-            req.logout(() => res.end()),
-        );
+        this.router.delete('/', (req, res) => req.logout(() => res.end()));
 
         await app.use('/auth', this.router);
     }

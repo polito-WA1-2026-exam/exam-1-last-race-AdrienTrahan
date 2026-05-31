@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes } from 'react-router';
 import { Router } from './Router.jsx';
 import { AuthProvider } from './providers/auth-provider.jsx';
+import './style.css';
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
