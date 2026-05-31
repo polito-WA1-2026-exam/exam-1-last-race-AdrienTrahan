@@ -7,201 +7,124 @@
         {
             "username": "user2",
             "password": "password2"
+        },
+        {
+            "username": "user3",
+            "password": "password3"
         }
     ],
     "events": [
-        {
-            "name": "Event 1",
-            "effect": -4
-        },
-        {
-            "name": "Event 2",
-            "effect": -3
-        },
-        {
-            "name": "Event 3",
-            "effect": -2
-        },
-        {
-            "name": "Event 4",
-            "effect": -1
-        },
-        {
-            "name": "Event 5",
-            "effect": 0
-        },
-        {
-            "name": "Event 6",
-            "effect": 1
-        },
-        {
-            "name": "Event 7",
-            "effect": 2
-        },
-        {
-            "name": "Event 8",
-            "effect": 3
-        },
-        {
-            "name": "Event 9",
-            "effect": 4
-        }
+        { "name": "Empty carriage, peaceful ride", "effect": 0 },
+        { "name": "Helpful staff gives directions", "effect": 1 },
+        { "name": "Smooth transfer between lines", "effect": 2 },
+        { "name": "Unexpected shortcut found", "effect": 3 },
+        { "name": "Express train delay", "effect": -1 },
+        { "name": "Ticket check complication", "effect": -2 },
+        { "name": "Lost connection, wrong platform", "effect": -3 },
+        { "name": "Major disruption on line", "effect": -4 },
+        { "name": "Lucky encounter, bonus reward", "effect": 4 },
+        { "name": "Slight confusion but no delay", "effect": 0 },
+        { "name": "Friendly passenger assistance", "effect": 1 },
+        { "name": "Minor reroute, extra time spent", "effect": -1 }
     ],
     "maps": [
         {
             "segments": [
                 {
                     "line": 0,
-                    "first_station_name": "Station 1",
-                    "second_station_name": "Station 2"
+                    "first_station_name": "Berri-UQAM",
+                    "second_station_name": "Saint-Laurent"
                 },
                 {
                     "line": 0,
-                    "first_station_name": "Station 2",
-                    "second_station_name": "Station 3"
+                    "first_station_name": "Saint-Laurent",
+                    "second_station_name": "Place-des-Arts"
                 },
                 {
                     "line": 0,
-                    "first_station_name": "Station 3",
-                    "second_station_name": "Station 4"
+                    "first_station_name": "Place-des-Arts",
+                    "second_station_name": "McGill"
+                },
+
+                {
+                    "line": 1,
+                    "first_station_name": "Atwater",
+                    "second_station_name": "Saint-Laurent"
                 },
                 {
                     "line": 1,
-                    "first_station_name": "Station 5",
-                    "second_station_name": "Station 2"
+                    "first_station_name": "Saint-Laurent",
+                    "second_station_name": "Beaudry"
                 },
                 {
                     "line": 1,
-                    "first_station_name": "Station 2",
-                    "second_station_name": "Station 6"
+                    "first_station_name": "Beaudry",
+                    "second_station_name": "Papineau"
                 },
                 {
                     "line": 1,
-                    "first_station_name": "Station 6",
-                    "second_station_name": "Station 7"
+                    "first_station_name": "Papineau",
+                    "second_station_name": "Frontenac"
                 },
+
                 {
-                    "line": 1,
-                    "first_station_name": "Station 7",
-                    "second_station_name": "Station 8"
+                    "line": 2,
+                    "first_station_name": "Jean-Drapeau",
+                    "second_station_name": "Papineau"
                 },
                 {
                     "line": 2,
-                    "first_station_name": "Station 9",
-                    "second_station_name": "Station 7"
+                    "first_station_name": "Papineau",
+                    "second_station_name": "Pie-IX"
                 },
                 {
                     "line": 2,
-                    "first_station_name": "Station 7",
-                    "second_station_name": "Station 10"
+                    "first_station_name": "Pie-IX",
+                    "second_station_name": "McGill"
                 },
+
                 {
-                    "line": 2,
-                    "first_station_name": "Station 10",
-                    "second_station_name": "Station 4"
+                    "line": 3,
+                    "first_station_name": "Namur",
+                    "second_station_name": "Vendôme"
                 },
                 {
                     "line": 3,
-                    "first_station_name": "Station 13",
-                    "second_station_name": "Station 11"
+                    "first_station_name": "Vendôme",
+                    "second_station_name": "McGill"
                 },
                 {
                     "line": 3,
-                    "first_station_name": "Station 11",
-                    "second_station_name": "Station 4"
+                    "first_station_name": "McGill",
+                    "second_station_name": "Snowdon"
                 },
                 {
                     "line": 3,
-                    "first_station_name": "Station 4",
-                    "second_station_name": "Station 12"
+                    "first_station_name": "Snowdon",
+                    "second_station_name": "Côte-des-Neiges"
                 },
                 {
                     "line": 3,
-                    "first_station_name": "Station 12",
-                    "second_station_name": "Station 14"
-                },
-                {
-                    "line": 3,
-                    "first_station_name": "Station 14",
-                    "second_station_name": "Station 15"
+                    "first_station_name": "Côte-des-Neiges",
+                    "second_station_name": "Mont-Royal"
                 }
             ],
             "stations": [
-                {
-                    "name": "Station 1",
-                    "x": 6,
-                    "y": 8
-                },
-                {
-                    "name": "Station 2",
-                    "x": 10,
-                    "y": 8
-                },
-                {
-                    "name": "Station 3",
-                    "x": 16,
-                    "y": 8
-                },
-                {
-                    "name": "Station 4",
-                    "x": 20,
-                    "y": 12
-                },
-                {
-                    "name": "Station 5",
-                    "x": 10,
-                    "y": 5
-                },
-                {
-                    "name": "Station 6",
-                    "x": 10,
-                    "y": 12
-                },
-                {
-                    "name": "Station 7",
-                    "x": 10,
-                    "y": 16
-                },
-                {
-                    "name": "Station 8",
-                    "x": 8,
-                    "y": 21
-                },
-                {
-                    "name": "Station 9",
-                    "x": 6,
-                    "y": 18
-                },
-                {
-                    "name": "Station 10",
-                    "x": 16,
-                    "y": 16
-                },
-                {
-                    "name": "Station 11",
-                    "x": 22,
-                    "y": 7
-                },
-                {
-                    "name": "Station 12",
-                    "x": 24,
-                    "y": 16
-                },
-                {
-                    "name": "Station 13",
-                    "x": 22,
-                    "y": 3
-                },
-                {
-                    "name": "Station 14",
-                    "x": 24,
-                    "y": 21
-                },
-                {
-                    "name": "Station 15",
-                    "x": 20,
-                    "y": 25
-                }
+                { "name": "Berri-UQAM", "x": 6, "y": 8 },
+                { "name": "Saint-Laurent", "x": 10, "y": 8 },
+                { "name": "Place-des-Arts", "x": 16, "y": 8 },
+                { "name": "McGill", "x": 20, "y": 12 },
+                { "name": "Atwater", "x": 10, "y": 5 },
+                { "name": "Beaudry", "x": 10, "y": 12 },
+                { "name": "Papineau", "x": 10, "y": 16 },
+                { "name": "Frontenac", "x": 8, "y": 21 },
+                { "name": "Jean-Drapeau", "x": 6, "y": 18 },
+                { "name": "Pie-IX", "x": 16, "y": 16 },
+                { "name": "Vendôme", "x": 22, "y": 7 },
+                { "name": "Snowdon", "x": 24, "y": 16 },
+                { "name": "Namur", "x": 22, "y": 3 },
+                { "name": "Côte-des-Neiges", "x": 24, "y": 21 },
+                { "name": "Mont-Royal", "x": 20, "y": 25 }
             ]
         }
     ]

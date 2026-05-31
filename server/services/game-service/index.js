@@ -63,7 +63,6 @@ export class GameService {
         );
 
         let newScore = game.score;
-        console.log(game.score, game);
         let events = [];
         if (isValid) {
             events = await this.eventService.sampleEvents(answer.length);
@@ -106,6 +105,26 @@ export class GameService {
             wasSolved,
             isOver,
         };
+    }
+
+    async getFinishedGames(userId) {
+        const games = await this.dbService.all(
+            'SELECT id, score, map_id, start_station_id, end_station_id, creation_date, was_solved, is_over FROM games WHERE user_id = ? AND is_over = 1',
+            [userId],
+        );
+        return Promise.all(
+            games.map(async (game) => ({
+                id: game.id,
+                score: game.score,
+                userId,
+                map: await this.mapService.getMap(game.map_id),
+                startStationId: game.start_station_id,
+                endStationId: game.end_station_id,
+                creationDate: game.creation_date,
+                wasSolved: game.was_solved,
+                isOver: game.is_over,
+            })),
+        );
     }
 
     static instance = null;

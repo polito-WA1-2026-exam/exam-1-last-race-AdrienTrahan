@@ -7,7 +7,7 @@ import {
     Fragment,
 } from 'react';
 
-const BOX_WIDTH = 250;
+const BOX_WIDTH = 400;
 const BOX_HEIGHT = 70;
 const BOX_PADDING = 10;
 

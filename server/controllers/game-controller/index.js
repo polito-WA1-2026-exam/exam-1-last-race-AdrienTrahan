@@ -46,6 +46,13 @@ export class GameController {
             },
         );
 
+        this.router.get('/', async (req, res) => {
+            const user = req.isAuthenticated();
+            if (!user) throw new AuthenticationInvalid();
+            const games = await this.gameService.getFinishedGames(req.user.id);
+            res.json({ games });
+        });
+
         await app.use('/game', this.router);
     }
 }

@@ -15,7 +15,6 @@ export class BaseController {
         await this.apiController.use(this.router);
 
         this.router.use((err, _req, res, _next) => {
-            console.log(err);
             const appError =
                 err instanceof AppError ? err : new InternalServerError();
             const response = {
