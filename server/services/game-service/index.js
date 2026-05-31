@@ -63,10 +63,15 @@ export class GameService {
         );
 
         let newScore = game.score;
+        console.log(game.score, game);
         let events = [];
         if (isValid) {
             events = await this.eventService.sampleEvents(answer.length);
             newScore += events.reduce((acc, event) => acc + event.effect, 0);
+            events = events.map((event, i) => ({
+                event,
+                answer: answer[i],
+            }));
         } else {
             newScore = 0;
         }

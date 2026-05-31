@@ -1,5 +1,4 @@
-import wretch from 'wretch';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import { getApi } from '../lib/network.js';

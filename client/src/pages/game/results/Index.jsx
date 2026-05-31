@@ -1,5 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
-import { useNavigate, Link } from 'react-router';
+import { Link } from 'react-router';
 
 import { useGame } from '../../../providers/game-provider.jsx';
 
@@ -25,7 +24,7 @@ export function Results() {
                 </>
             )}
             <div className="flex gap-2 mt-14 mb-14">
-                <Link to="/game/setup">
+                <Link to="/">
                     <button className="px-4 py-2 border-2 bg-blue-400 hover:bg-blue-500 active:bg-blue-700  cursor-pointer font-bold box-border">
                         Home
                     </button>

@@ -1,5 +1,4 @@
-import wretch from 'wretch';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 import { getApi } from '../lib/network.js';
 const AuthContext = createContext();

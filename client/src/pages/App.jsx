@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
-import { useAuth } from '../providers/auth-provider.jsx';
 import { ConnectionPanel } from '../components/ConnectionPanel.jsx';
+import { useAuth } from '../providers/auth-provider.jsx';
 
 export function App() {
     const { user, loading, logout } = useAuth();

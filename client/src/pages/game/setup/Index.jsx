@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
-import { getApi } from '../../../lib/network.js';
-import { useGame } from '../../../providers/game-provider.jsx';
-import { useAuth } from '../../../providers/auth-provider.jsx';
 import { ConnectionPanel } from '../../../components/ConnectionPanel.jsx';
 import { InstructionPanel } from '../../../components/InstructionPanel.jsx';
 import { NetworkMap } from '../../../components/NetworkMap.jsx';
+import { useAuth } from '../../../providers/auth-provider.jsx';
+import { useGame } from '../../../providers/game-provider.jsx';
 
 export function Setup() {
     const { game, create, launch } = useGame();

@@ -1,14 +1,11 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 
-import { getApi } from '../../../lib/network.js';
-import { useGame } from '../../../providers/game-provider.jsx';
-import { useAuth } from '../../../providers/auth-provider.jsx';
-import { ConnectionPanel } from '../../../components/ConnectionPanel.jsx';
-import { InstructionPanel } from '../../../components/InstructionPanel.jsx';
 import { NetworkMap } from '../../../components/NetworkMap.jsx';
+import { useGame } from '../../../providers/game-provider.jsx';
 
 export function Planning() {
+    const navigate = useNavigate();
     const { game, submit } = useGame();
     const [instructionPanelShowed, setInstructionPanelShowed] = useState(false);
     const [selectedSegments, setSelectedSegments] = useState([]);
@@ -28,11 +25,13 @@ export function Planning() {
     }, []);
 
     useEffect(() => {
+        let unmounted = false;
         if (!endingTime) return;
         const diff = endingTime - new Date().getTime();
         setTimeLeft(diff > 0 ? diff : 0);
         const interval = setInterval(() => {
             const diff = endingTime - new Date().getTime();
+            if (unmounted) return;
             setTimeLeft(diff > 0 ? diff : 0);
             if (diff <= 0) {
                 submitAnswer();
@@ -40,7 +39,10 @@ export function Planning() {
             }
         }, 1000);
 
-        return () => clearInterval(interval);
+        return () => {
+            clearInterval(interval);
+            unmounted = true;
+        };
     }, [endingTime]);
 
     function submitAnswer() {
@@ -58,7 +60,6 @@ export function Planning() {
             });
     }
 
-    const navigate = useNavigate();
     return (
         <>
             <div className="flex flex-col inset-0 fixed">
