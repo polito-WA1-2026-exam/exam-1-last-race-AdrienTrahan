@@ -63,7 +63,8 @@
 
 ## Screenshot
 
-![Screenshot](./img/screenshot.jpg)
+![ScoreBoard](./imgs/ScoreBoard.png)
+![GamePreview](./imgs/GamePreview.png)
 
 ## Users Credentials
 
