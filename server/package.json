@@ -1,15 +1,24 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "express": "^5.2.1"
-  }
+    "name": "server",
+    "version": "1.0.0",
+    "description": "",
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon index.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.6",
+        "express": "^5.2.1",
+        "express-session": "^1.19.0",
+        "node-cron": "^4.2.1",
+        "passport": "^0.7.0",
+        "passport-http": "^0.3.0",
+        "passport-local": "^1.0.0",
+        "passport-session": "^1.0.2",
+        "sqlite3": "^6.0.1",
+        "zod": "^4.4.3"
+    }
 }

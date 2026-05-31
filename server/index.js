@@ -1,11 +1,5 @@
-// imports
-import express from "express";
+import { App } from './app.js';
 
-// init express
-const app = new express();
-const port = 3001;
+const app = new App();
 
-// activate the server
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
+app.start();
