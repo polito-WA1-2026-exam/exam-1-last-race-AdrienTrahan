@@ -9,16 +9,24 @@ import { InstructionPanel } from '../../../components/InstructionPanel.jsx';
 import { NetworkMap } from '../../../components/NetworkMap.jsx';
 
 export function Setup() {
-    const { game, create } = useGame();
+    const { game, create, launch } = useGame();
     const { user, loading, logout } = useAuth();
 
     const [loginPanelShowed, setLoginPanelShowed] = useState(false);
     const [instructionPanelShowed, setInstructionPanelShowed] = useState(false);
 
     const navigate = useNavigate();
-    useEffect(() => {
-        console.log(game);
-    }, [game]);
+
+    function launchGame() {
+        return launch()
+            .then((game) => {
+                navigate(`/game/planning`);
+            })
+            .catch((err) => {
+                alert(err.message ?? 'Failed to launch game');
+                navigate('/');
+            });
+    }
     useEffect(() => {
         let unmounted = false;
         create().catch(() => {
@@ -79,8 +87,9 @@ export function Setup() {
                         )}
                         {game && !loading && (
                             <button
+                                onClick={launchGame}
                                 className="px-4 py-2 border-2 disabled:text-zinc-200 disabled:cursor-not-allowed disabled:bg-amber-100 not-disabled:cursor-pointer not-disabled:bg-amber-400 not-disabled:hover:bg-amber-500 not-disabled:active:bg-amber-700 font-bold box-border"
-                                disabled={!user}
+                                // disabled={!user}
                             >
                                 Launch Game
                             </button>
@@ -109,7 +118,7 @@ export function Setup() {
                         </>
                     )}
                 </div>
-                <div className="flex-1 min-h-0 w-full p-2 bg-zinc-500">
+                <div className="flex-1 min-h-0 w-full bg-zinc-500">
                     <NetworkMap
                         stations={game?.map?.stations ?? []}
                         segments={game?.map?.segments ?? []}

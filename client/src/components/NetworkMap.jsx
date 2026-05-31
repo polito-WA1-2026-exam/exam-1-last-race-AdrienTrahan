@@ -1,4 +1,11 @@
-import { useRef, useMemo, useCallback, useState, useLayoutEffect } from 'react';
+import {
+    useRef,
+    useMemo,
+    useCallback,
+    useState,
+    useLayoutEffect,
+    Fragment,
+} from 'react';
 
 const BOX_WIDTH = 250;
 const BOX_HEIGHT = 70;
@@ -15,19 +22,36 @@ const LINE_COLORS = [
     '#ec4899',
 ];
 
-export function NetworkMap({ stations = [], segments = [] }) {
-    const minX = useMemo(() => Math.min(...stations.map((s) => s.x)));
-    const minY = useMemo(() => Math.min(...stations.map((s) => s.y)));
-    const maxX = useMemo(() => Math.max(...stations.map((s) => s.x)));
-    const maxY = useMemo(() => Math.max(...stations.map((s) => s.y)));
-    const padX = useMemo(() => (maxX - minX) / 20);
-    const padY = useMemo(() => (maxY - minY) / 20);
-    const stationIds = useMemo(() =>
-        stations.reduce((acc, item) => {
+export function NetworkMap({ stations = [], segments = [], drawLines = true }) {
+    const xs = stations.map((s) => s.x);
+    const ys = stations.map((s) => s.y);
+
+    const minX = useMemo(
+        () => (stations.length ? Math.min(...xs) : 0),
+        [stations],
+    );
+    const minY = useMemo(
+        () => (stations.length ? Math.min(...ys) : 0),
+        [stations],
+    );
+    const maxX = useMemo(
+        () => (stations.length ? Math.max(...xs) : 0),
+        [stations],
+    );
+    const maxY = useMemo(
+        () => (stations.length ? Math.max(...ys) : 0),
+        [stations],
+    );
+
+    const padX = useMemo(() => (maxX - minX) / 10, [minX, maxX]);
+    const padY = useMemo(() => (maxY - minY) / 10, [minY, maxY]);
+
+    const stationIds = useMemo(() => {
+        return stations.reduce((acc, item) => {
             acc[item.id] = item;
             return acc;
-        }, {}),
-    );
+        }, {});
+    }, [stations]);
     if (!stations.length || !segments.length) return null;
     return (
         <svg
@@ -36,33 +60,42 @@ export function NetworkMap({ stations = [], segments = [] }) {
             preserveAspectRatio="xMidYMid meet"
             viewBox={`0 0 ${100 * (maxX - minX + 2 * padX)} ${100 * (maxY - minY + 2 * padY)}`}
         >
-            {segments.map((segment, i) => (
-                <line
-                    key={i}
-                    x1={
-                        100 *
-                        (stationIds[segment.first_station_id].x - minX + padX)
-                    }
-                    y1={
-                        100 *
-                        (stationIds[segment.first_station_id].y - minY + padY)
-                    }
-                    x2={
-                        100 *
-                        (stationIds[segment.second_station_id].x - minX + padX)
-                    }
-                    y2={
-                        100 *
-                        (stationIds[segment.second_station_id].y - minY + padY)
-                    }
-                    stroke={LINE_COLORS[segment.line]}
-                    strokeWidth={8}
-                />
-            ))}
+            {drawLines &&
+                segments.map((segment, i) => (
+                    <line
+                        x1={
+                            100 *
+                            (stationIds[segment.first_station_id].x -
+                                minX +
+                                padX)
+                        }
+                        y1={
+                            100 *
+                            (stationIds[segment.first_station_id].y -
+                                minY +
+                                padY)
+                        }
+                        x2={
+                            100 *
+                            (stationIds[segment.second_station_id].x -
+                                minX +
+                                padX)
+                        }
+                        y2={
+                            100 *
+                            (stationIds[segment.second_station_id].y -
+                                minY +
+                                padY)
+                        }
+                        key={'segment-line-' + i}
+                        stroke={LINE_COLORS[segment.line]}
+                        strokeWidth={8}
+                    />
+                ))}
             {stations.map((station, i) => (
-                <>
+                <Fragment key={'station-group-' + i}>
                     <circle
-                        key={i}
+                        key={'station-circle-' + i}
                         cx={100 * (station.x - minX + padX)}
                         cy={100 * (station.y - minY + padY)}
                         r={20}
@@ -83,6 +116,7 @@ export function NetworkMap({ stations = [], segments = [] }) {
                         width={BOX_WIDTH + BOX_PADDING}
                         height={BOX_HEIGHT + BOX_PADDING}
                         fill="black"
+                        key={'outer-rect-' + i}
                     />
                     <rect
                         x={100 * (station.x - minX + padX) - BOX_WIDTH / 2}
@@ -93,7 +127,8 @@ export function NetworkMap({ stations = [], segments = [] }) {
                         }
                         width={BOX_WIDTH}
                         height={BOX_HEIGHT}
-                        fill="white"
+                        fill={station.highlighted ? 'yellow' : 'white'}
+                        key={'inner-rect-' + i}
                     />
                     <text
                         x={100 * (station.x - minX + padX)}
@@ -102,12 +137,11 @@ export function NetworkMap({ stations = [], segments = [] }) {
                         dominantBaseline="middle"
                         fontSize={50}
                         fontWeight="bold"
-                        enableBackground={true}
-                        backgroundColor={'white'}
+                        key={'name-text' + i}
                     >
                         {station.name}
                     </text>
-                </>
+                </Fragment>
             ))}
         </svg>
     );
