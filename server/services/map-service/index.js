@@ -1,5 +1,3 @@
-import { default as generate } from 'boring-name-generator';
-
 import { DBService } from '../db-service/index.js';
 import { InternalServerError } from '../../error.js';
 export class MapService {

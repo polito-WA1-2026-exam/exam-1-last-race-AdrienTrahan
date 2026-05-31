@@ -21,7 +21,7 @@ export class App {
         this.mapService = await MapService.create();
         this.eventService = await EventService.create();
 
-        await this.prefillDefaults();
+        // await this.prefillDefaults(); Only uncomment this to generate default data
 
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));

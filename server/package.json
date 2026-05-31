@@ -10,7 +10,6 @@
         "dev": "nodemon index.js"
     },
     "dependencies": {
-        "boring-name-generator": "^1.0.3",
         "cors": "^2.8.6",
         "express": "^5.2.1",
         "express-session": "^1.19.0",
