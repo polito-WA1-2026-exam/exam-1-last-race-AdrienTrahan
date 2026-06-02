@@ -75,7 +75,9 @@ export function Execution() {
                 {completedEvents.map((event, i) => (
                     <EventCell
                         key={'event-' + i}
-                        segment={game.map.segments[event.answer]}
+                        segment={game.map.segments.find(
+                            (s) => s.id === event.answer,
+                        )}
                         event={event.event}
                         stationIds={stationIds}
                         larger={i === 0}
