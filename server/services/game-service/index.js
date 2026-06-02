@@ -107,24 +107,34 @@ export class GameService {
         };
     }
 
-    async getFinishedGames(userId) {
-        const games = await this.dbService.all(
-            'SELECT id, score, map_id, start_station_id, end_station_id, creation_date, was_solved, is_over FROM games WHERE user_id = ? AND is_over = 1',
-            [userId],
+    async getScoreboard() {
+        const rows = await this.dbService.all(
+            `
+            SELECT 
+                u.id AS userId,
+                u.username AS username,
+                g.score AS bestScore,
+                g.creation_date AS bestDate
+            FROM users u
+            JOIN games g ON g.user_id = u.id
+            WHERE g.is_over = 1
+            AND g.score = (
+                SELECT MAX(score)
+                FROM games
+                WHERE user_id = u.id AND is_over = 1
+            )
+            GROUP BY u.id
+            ORDER BY bestScore DESC
+        `,
         );
-        return Promise.all(
-            games.map(async (game) => ({
-                id: game.id,
-                score: game.score,
-                userId,
-                map: await this.mapService.getMap(game.map_id),
-                startStationId: game.start_station_id,
-                endStationId: game.end_station_id,
-                creationDate: game.creation_date,
-                wasSolved: game.was_solved,
-                isOver: game.is_over,
-            })),
-        );
+
+        return rows.map((row, index) => ({
+            rank: index + 1,
+            userId: row.userId,
+            username: row.username,
+            bestScore: row.bestScore,
+            bestDate: row.bestDate,
+        }));
     }
 
     static instance = null;
