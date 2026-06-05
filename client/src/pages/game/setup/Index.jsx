@@ -118,10 +118,19 @@ export function Setup() {
                     )}
                 </div>
                 <div className="flex-1 min-h-0 w-full bg-zinc-500 relative">
-                    <NetworkMap
-                        stations={game?.map?.stations ?? []}
-                        segments={game?.map?.segments ?? []}
-                    />
+                    {!loading && user && (
+                        <NetworkMap
+                            stations={game?.map?.stations ?? []}
+                            segments={game?.map?.segments ?? []}
+                        />
+                    )}
+                    {!loading && !user && (
+                        <div className="absolute inset-0 flex justify-center items-center">
+                            <h1 className="text-4xl font-bold text-white">
+                                Please login to start playing
+                            </h1>
+                        </div>
+                    )}
                 </div>
             </div>
         </>
