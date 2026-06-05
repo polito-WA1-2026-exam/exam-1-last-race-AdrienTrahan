@@ -117,7 +117,7 @@ export function Setup() {
                         </>
                     )}
                 </div>
-                <div className="flex-1 min-h-0 w-full bg-zinc-500">
+                <div className="flex-1 min-h-0 w-full bg-zinc-500 relative">
                     <NetworkMap
                         stations={game?.map?.stations ?? []}
                         segments={game?.map?.segments ?? []}

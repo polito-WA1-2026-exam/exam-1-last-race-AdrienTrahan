@@ -115,7 +115,7 @@ export function Planning() {
                             <span className="mx-4 text-gray-400">➔</span>
                             {stationIds?.[game?.endStationId]?.name}
                         </div>
-                        <div className="w-full p-2 bg-zinc-500 flex-1 min-h-0">
+                        <div className="w-full p-2 bg-zinc-500 flex-1 min-h-0 relative">
                             <NetworkMap
                                 stations={(game?.map?.stations ?? []).map(
                                     (station) => ({

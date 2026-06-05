@@ -20,7 +20,7 @@
         { "name": "Unexpected shortcut found", "effect": 3 },
         { "name": "Express train delay", "effect": -1 },
         { "name": "Ticket check complication", "effect": -2 },
-        { "name": "Lost connection, wrong platform", "effect": -3 },
+        { "name": "Train delay at the station", "effect": -3 },
         { "name": "Major disruption on line", "effect": -4 },
         { "name": "Lucky encounter, bonus reward", "effect": 4 },
         { "name": "Slight confusion but no delay", "effect": 0 },
@@ -32,28 +32,228 @@
             "segments": [
                 {
                     "line": 0,
+                    "first_station_name": "Montmorency",
+                    "second_station_name": "De la Concorde"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "De la Concorde",
+                    "second_station_name": "Cartier"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Cartier",
+                    "second_station_name": "Henri-Bourassa"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Henri-Bourassa",
+                    "second_station_name": "Sauvé"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Sauvé",
+                    "second_station_name": "Crémazie"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Crémazie",
+                    "second_station_name": "Jarry"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Jarry",
+                    "second_station_name": "Jean-Talon"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Jean-Talon",
+                    "second_station_name": "Beaubien"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Beaubien",
+                    "second_station_name": "Rosemont"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Rosemont",
+                    "second_station_name": "Laurier"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Laurier",
+                    "second_station_name": "Mont-Royal"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Mont-Royal",
+                    "second_station_name": "Sherbrooke"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Sherbrooke",
+                    "second_station_name": "Berri-UQAM"
+                },
+                {
+                    "line": 0,
                     "first_station_name": "Berri-UQAM",
-                    "second_station_name": "Saint-Laurent"
+                    "second_station_name": "Champ-de-Mars"
                 },
                 {
                     "line": 0,
-                    "first_station_name": "Saint-Laurent",
-                    "second_station_name": "Place-des-Arts"
+                    "first_station_name": "Champ-de-Mars",
+                    "second_station_name": "Place-d'Armes"
                 },
                 {
                     "line": 0,
-                    "first_station_name": "Place-des-Arts",
-                    "second_station_name": "McGill"
+                    "first_station_name": "Place-d'Armes",
+                    "second_station_name": "Square-Victoria-OACI"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Square-Victoria-OACI",
+                    "second_station_name": "Bonaventure"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Bonaventure",
+                    "second_station_name": "Lucien-L'Allier"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Lucien-L'Allier",
+                    "second_station_name": "Georges-Vanier"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Georges-Vanier",
+                    "second_station_name": "Lionel-Groulx"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Lionel-Groulx",
+                    "second_station_name": "Place-Saint-Henri"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Place-Saint-Henri",
+                    "second_station_name": "Vendôme"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Vendôme",
+                    "second_station_name": "Villa-Maria"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Villa-Maria",
+                    "second_station_name": "Snowdon"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Snowdon",
+                    "second_station_name": "Côte-Sainte-Catherine"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Côte-Sainte-Catherine",
+                    "second_station_name": "Plamondon"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Plamondon",
+                    "second_station_name": "Namur"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Namur",
+                    "second_station_name": "De la Savane"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "De la Savane",
+                    "second_station_name": "Du Collège"
+                },
+                {
+                    "line": 0,
+                    "first_station_name": "Du Collège",
+                    "second_station_name": "Côte-Vertu"
                 },
 
                 {
                     "line": 1,
+                    "first_station_name": "Angrignon",
+                    "second_station_name": "Monk"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Monk",
+                    "second_station_name": "Jolicoeur"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Jolicoeur",
+                    "second_station_name": "Verdun"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Verdun",
+                    "second_station_name": "De l'Église"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "De l'Église",
+                    "second_station_name": "Lasalle"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Lasalle",
+                    "second_station_name": "Charlevoix"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Charlevoix",
+                    "second_station_name": "Lionel-Groulx"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Lionel-Groulx",
+                    "second_station_name": "Atwater"
+                },
+                {
+                    "line": 1,
                     "first_station_name": "Atwater",
+                    "second_station_name": "Guy-Concordia"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Guy-Concordia",
+                    "second_station_name": "Peel"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Peel",
+                    "second_station_name": "McGill"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "McGill",
+                    "second_station_name": "Place-des-Arts"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Place-des-Arts",
                     "second_station_name": "Saint-Laurent"
                 },
                 {
                     "line": 1,
                     "first_station_name": "Saint-Laurent",
+                    "second_station_name": "Berri-UQAM"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Berri-UQAM",
                     "second_station_name": "Beaudry"
                 },
                 {
@@ -66,38 +266,63 @@
                     "first_station_name": "Papineau",
                     "second_station_name": "Frontenac"
                 },
-
                 {
-                    "line": 2,
-                    "first_station_name": "Jean-Drapeau",
-                    "second_station_name": "Papineau"
+                    "line": 1,
+                    "first_station_name": "Frontenac",
+                    "second_station_name": "Préfontaine"
                 },
                 {
-                    "line": 2,
-                    "first_station_name": "Papineau",
+                    "line": 1,
+                    "first_station_name": "Préfontaine",
+                    "second_station_name": "Joliette"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Joliette",
                     "second_station_name": "Pie-IX"
                 },
                 {
-                    "line": 2,
+                    "line": 1,
                     "first_station_name": "Pie-IX",
-                    "second_station_name": "McGill"
+                    "second_station_name": "Viau"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Viau",
+                    "second_station_name": "Assomption"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Assomption",
+                    "second_station_name": "Cadillac"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Cadillac",
+                    "second_station_name": "Langelier"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Langelier",
+                    "second_station_name": "Radisson"
+                },
+                {
+                    "line": 1,
+                    "first_station_name": "Radisson",
+                    "second_station_name": "Honoré-Beaugrand"
                 },
 
                 {
-                    "line": 3,
-                    "first_station_name": "Namur",
-                    "second_station_name": "Vendôme"
+                    "line": 2,
+                    "first_station_name": "Berri-UQAM",
+                    "second_station_name": "Jean-Drapeau"
                 },
                 {
-                    "line": 3,
-                    "first_station_name": "Vendôme",
-                    "second_station_name": "McGill"
+                    "line": 2,
+                    "first_station_name": "Jean-Drapeau",
+                    "second_station_name": "Longueuil-Université-de-Sherbrooke"
                 },
-                {
-                    "line": 3,
-                    "first_station_name": "McGill",
-                    "second_station_name": "Snowdon"
-                },
+
                 {
                     "line": 3,
                     "first_station_name": "Snowdon",
@@ -106,25 +331,142 @@
                 {
                     "line": 3,
                     "first_station_name": "Côte-des-Neiges",
-                    "second_station_name": "Mont-Royal"
+                    "second_station_name": "Université-de-Montréal"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Université-de-Montréal",
+                    "second_station_name": "Édouard-Montpetit"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Édouard-Montpetit",
+                    "second_station_name": "Outremont"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Outremont",
+                    "second_station_name": "Acadie"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Acadie",
+                    "second_station_name": "Parc"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Parc",
+                    "second_station_name": "De Castelnau"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "De Castelnau",
+                    "second_station_name": "Jean-Talon"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Jean-Talon",
+                    "second_station_name": "Fabre"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "Fabre",
+                    "second_station_name": "D'Iberville"
+                },
+                {
+                    "line": 3,
+                    "first_station_name": "D'Iberville",
+                    "second_station_name": "Saint-Michel"
                 }
             ],
             "stations": [
-                { "name": "Berri-UQAM", "x": 6, "y": 8 },
-                { "name": "Saint-Laurent", "x": 10, "y": 8 },
-                { "name": "Place-des-Arts", "x": 16, "y": 8 },
-                { "name": "McGill", "x": 20, "y": 12 },
-                { "name": "Atwater", "x": 10, "y": 5 },
-                { "name": "Beaudry", "x": 10, "y": 12 },
-                { "name": "Papineau", "x": 10, "y": 16 },
-                { "name": "Frontenac", "x": 8, "y": 21 },
-                { "name": "Jean-Drapeau", "x": 6, "y": 18 },
-                { "name": "Pie-IX", "x": 16, "y": 16 },
-                { "name": "Vendôme", "x": 22, "y": 7 },
-                { "name": "Snowdon", "x": 24, "y": 16 },
-                { "name": "Namur", "x": 22, "y": 3 },
-                { "name": "Côte-des-Neiges", "x": 24, "y": 21 },
-                { "name": "Mont-Royal", "x": 20, "y": 25 }
+                { "name": "Montmorency", "x": 6, "y": 2 },
+                { "name": "De la Concorde", "x": 8, "y": 2 },
+                { "name": "Cartier", "x": 10, "y": 2 },
+
+                { "name": "Henri-Bourassa", "x": 12, "y": 4 },
+                { "name": "Sauvé", "x": 13, "y": 5 },
+                { "name": "Crémazie", "x": 14, "y": 6 },
+                { "name": "Jarry", "x": 15, "y": 7 },
+
+                { "name": "Jean-Talon", "x": 16, "y": 8 },
+
+                { "name": "Beaubien", "x": 17, "y": 9 },
+                { "name": "Rosemont", "x": 18, "y": 10 },
+                { "name": "Laurier", "x": 19, "y": 11 },
+                { "name": "Mont-Royal", "x": 20, "y": 12 },
+                { "name": "Sherbrooke", "x": 21, "y": 13 },
+
+                { "name": "Berri-UQAM", "x": 22, "y": 14 },
+
+                { "name": "Champ-de-Mars", "x": 23, "y": 15 },
+                { "name": "Place-d'Armes", "x": 22, "y": 16 },
+                { "name": "Square-Victoria-OACI", "x": 21, "y": 17 },
+                { "name": "Bonaventure", "x": 20, "y": 18 },
+                { "name": "Lucien-L'Allier", "x": 19, "y": 19 },
+                { "name": "Georges-Vanier", "x": 18, "y": 20 },
+
+                { "name": "Lionel-Groulx", "x": 17, "y": 21 },
+
+                { "name": "Place-Saint-Henri", "x": 15, "y": 23 },
+                { "name": "Vendôme", "x": 13, "y": 25 },
+                { "name": "Villa-Maria", "x": 11, "y": 27 },
+
+                { "name": "Snowdon", "x": 9, "y": 29 },
+
+                { "name": "Côte-Sainte-Catherine", "x": 7, "y": 27 },
+                { "name": "Plamondon", "x": 6, "y": 26 },
+                { "name": "Namur", "x": 5, "y": 25 },
+                { "name": "De la Savane", "x": 4, "y": 24 },
+                { "name": "Du Collège", "x": 3, "y": 23 },
+                { "name": "Côte-Vertu", "x": 2, "y": 22 },
+
+                { "name": "Honoré-Beaugrand", "x": 32, "y": 2 },
+                { "name": "Radisson", "x": 31, "y": 3 },
+                { "name": "Langelier", "x": 30, "y": 4 },
+                { "name": "Cadillac", "x": 29, "y": 5 },
+                { "name": "Assomption", "x": 28, "y": 6 },
+                { "name": "Viau", "x": 29, "y": 7 },
+                { "name": "Pie-IX", "x": 28, "y": 8 },
+                { "name": "Joliette", "x": 27, "y": 9 },
+                { "name": "Préfontaine", "x": 26, "y": 10 },
+                { "name": "Frontenac", "x": 27, "y": 11 },
+                { "name": "Papineau", "x": 26, "y": 12 },
+                { "name": "Beaudry", "x": 25, "y": 13 },
+
+                { "name": "Saint-Laurent", "x": 21, "y": 14 },
+                { "name": "Place-des-Arts", "x": 20, "y": 15 },
+                { "name": "McGill", "x": 19, "y": 16 },
+                { "name": "Peel", "x": 18, "y": 17 },
+                { "name": "Guy-Concordia", "x": 17, "y": 18 },
+                { "name": "Atwater", "x": 16, "y": 19 },
+
+                { "name": "Charlevoix", "x": 18, "y": 23 },
+                { "name": "Lasalle", "x": 19, "y": 25 },
+                { "name": "De l'Église", "x": 18, "y": 27 },
+                { "name": "Verdun", "x": 17, "y": 29 },
+                { "name": "Jolicoeur", "x": 16, "y": 31 },
+                { "name": "Monk", "x": 15, "y": 33 },
+                { "name": "Angrignon", "x": 14, "y": 35 },
+
+                {
+                    "name": "Longueuil-Université-de-Sherbrooke",
+                    "x": 28,
+                    "y": 14
+                },
+                { "name": "Jean-Drapeau", "x": 26, "y": 14 },
+
+                { "name": "Parc", "x": 14, "y": 11 },
+                { "name": "Acadie", "x": 14, "y": 14 },
+                { "name": "Outremont", "x": 14, "y": 17 },
+                { "name": "Édouard-Montpetit", "x": 14, "y": 20 },
+                { "name": "Université-de-Montréal", "x": 12, "y": 22 },
+                { "name": "Côte-des-Neiges", "x": 10, "y": 24 },
+
+                { "name": "De Castelnau", "x": 15, "y": 10 },
+                { "name": "Fabre", "x": 18, "y": 7 },
+                { "name": "D'Iberville", "x": 19, "y": 6 },
+                { "name": "Saint-Michel", "x": 20, "y": 5 }
             ]
         }
     ]

@@ -47,7 +47,7 @@ export function Execution() {
 
     return (
         <div className="fixed inset-0 flex">
-            <div className="h-full min-w-0 flex-1 p-2 bg-zinc-500">
+            <div className="h-full min-w-0 flex-1 p-2 bg-zinc-500 relative">
                 <NetworkMap
                     stations={(game?.map?.stations ?? []).map((station) => ({
                         ...station,

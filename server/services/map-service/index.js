@@ -61,6 +61,7 @@ export class MapService {
                 ids[segment.second_station_name],
             );
         }
+        consol.log(mapId);
         return mapId;
     }
 

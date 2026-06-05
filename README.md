@@ -74,4 +74,4 @@
 
 ## Use of AI Tools
 
-AI was used to write this readme, the content of the instructions panel and the usage of the crypto module for hashing the passwords. Windsurf was used as a code completion tool. The rest of the logic was implemented by me.
+AI was used to write this readme, the content of the instructions panel, to implement the zoom on the network map and the usage of the crypto module for hashing the passwords. Windsurf was used as a code completion tool. The rest of the logic was implemented by me.
