@@ -72,7 +72,7 @@ export function NetworkMap({ stations = [], segments = [], drawLines = true }) {
         const worldX = viewBox.x + (mouseX / rect.width) * viewBox.width;
         const worldY = viewBox.y + (mouseY / rect.height) * viewBox.height;
         const factor = e.deltaY > 0 ? 1.05 : 0.95;
-        const nextZoom = Math.max(0.5, Math.min(5, zoom * factor));
+        const nextZoom = Math.max(0.2, Math.min(2, zoom * factor));
         const scale = nextZoom / zoom;
         setZoom(nextZoom);
 
