@@ -156,7 +156,7 @@ export class MapService {
             for (const end of stations) {
                 if (start.id >= end.id) continue;
                 const dist = distances.get(end.id);
-                if (dist !== undefined && dist >= 4) {
+                if (dist !== undefined && dist >= 3) {
                     validPairs.push({
                         start,
                         end,
