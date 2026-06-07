@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { useNavigate } from 'react-router';
 
 import { NetworkMap } from '../../../components/NetworkMap.jsx';
@@ -9,6 +9,7 @@ export function Planning() {
     const { game, submit } = useGame();
     const [instructionPanelShowed, setInstructionPanelShowed] = useState(false);
     const [selectedSegments, setSelectedSegments] = useState([]);
+    const selectedSegmentsRef = useRef([]);
     const [endingTime, setEndingTime] = useState(null);
     const [timeLeft, setTimeLeft] = useState(null);
     const stationIds = useMemo(
@@ -19,6 +20,10 @@ export function Planning() {
             }, {}),
         [game],
     );
+
+    useEffect(() => {
+        selectedSegmentsRef.current = selectedSegments;
+    }, [selectedSegments]);
 
     useEffect(() => {
         setEndingTime(Date.now() + 90 * 1000);
@@ -46,7 +51,7 @@ export function Planning() {
     }, [endingTime]);
 
     function submitAnswer() {
-        submit(selectedSegments)
+        submit(selectedSegmentsRef.current)
             .then(({ game, events }) => {
                 if (game.wasSolved) {
                     navigate(`/game/execution`);
